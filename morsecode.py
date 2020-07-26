@@ -39,8 +39,19 @@ morseCode = {
 	' ' :'  '
 }
 
+morseCodeInverse = {val:key for key, val in morseCode.items()}
+
 invalidCharacter = "?"
-text = ' '.join(sys.argv[1:])
+options = ['-f', '-t', '-r']
+chosenOptions = []
+textStartIndex = 1
+for option in options:
+	if option in sys.argv:
+		chosenOptions.append(option)
+if len(chosenOptions) != 0:
+	textStartIndex = sys.argv.index(chosenOptions[len(chosenOptions) - 1]) + 1
+
+text = ' '.join(sys.argv[textStartIndex:])
 text = text.lower()
 transformedText = ""
 for i in text:
