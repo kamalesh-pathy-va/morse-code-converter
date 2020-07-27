@@ -1,4 +1,6 @@
 import sys
+
+
 morseCode = {
 	'a' :'•—',
 	'b' :'—•••',
@@ -39,34 +41,56 @@ morseCode = {
 	' ' :'  '
 }
 
+#Don't change
 morseCodeInverse = {val:key for key, val in morseCode.items()}
 
+#Can be changed
 invalidCharacter = "?"
+
+
+def help():
+	pass
+
+def convert(text):
+	transformedText = ""
+	for i in text:
+		if i in morseCode.keys():
+			transformedText += i
+		else:
+			transformedText += invalidCharacter
+
+
+	output = ""
+	for i in transformedText:
+		if i != invalidCharacter:
+			output += morseCode[i] + ' '
+		else:
+			output += invalidCharacter
+
+	return output
+
+
+#Don't change
 options = ['-f', '-t', '-r']
-chosenOptions = []
+selectedOptions = []
 textStartIndex = 1
+
 for option in options:
 	if option in sys.argv:
-		chosenOptions.append(option)
-if len(chosenOptions) != 0:
-	textStartIndex = sys.argv.index(chosenOptions[len(chosenOptions) - 1]) + 1
+		selectedOptions.append(option)
+if len(selectedOptions) != 0:
+	textStartIndex = sys.argv.index(selectedOptions[len(selectedOptions) - 1]) + 1
 
 text = ' '.join(sys.argv[textStartIndex:])
 text = text.lower()
-transformedText = ""
-for i in text:
-	if i in morseCode.keys():
-		transformedText += i
-	else:
-		transformedText += invalidCharacter
 
+if '-f' in selectedOptions:
+	if '-t' in selectedOptions:
+		print("'-f' option and '-t' cannot be used at once.")
+		help()
+	elif '-r' in selectedOptions:
+		print(invert(text))
 
-output = ""
-for i in transformedText:
-	if i != invalidCharacter:
-		output += morseCode[i] + ' '
-	else:
-		output += invalidCharacter
 
 print(transformedText)
 print(output.strip())
