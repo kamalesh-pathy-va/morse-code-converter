@@ -109,6 +109,19 @@ def convert(text):
 	return output
 
 
+def invert(morseText):
+	for i in morseText:
+		if i not in '.- ':
+			return "'-r' option expects morse code to convert text"
+	letters = morseText.split(' ')
+	output = ""
+	for i in letters:
+		if i in morseCodeInverse.keys():
+			output += morseCodeInverse[i]
+		else:
+			output += invalidCharacter
+	return output
+
 #Don't change
 options = ['-f', '-t', '-r']
 selectedOptions = []
@@ -137,6 +150,8 @@ elif '-t' in selectedOptions:
 		help()
 	elif '-t' in selectedOptions:
 		print(convert(text))
+elif '-r' in selectedOptions:
+	print(invert(text))
 else:
 	print(convert(text))
 
