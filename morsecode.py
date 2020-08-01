@@ -137,7 +137,8 @@ elif '-t' in selectedOptions:
 		help()
 	elif '-t' in selectedOptions:
 		print(convert(text))
-
+else:
+	print(convert(text))
 
 
 # print(transformedText)
