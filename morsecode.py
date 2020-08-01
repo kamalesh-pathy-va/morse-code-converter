@@ -1,7 +1,46 @@
 import sys
 
-
 morseCode = {
+	'a' :'.-',
+	'b' :'-...',
+	'c' :'-.-.',
+	'd' :'-..',
+	'e' :'.',
+	'f' :'..-.',
+	'g' :'--.',
+	'h' :'....',
+	'i' :'..',
+	'j' :'.---',
+	'k' :'-.-',
+	'l' :'.-..',
+	'm' :'--',
+	'n' :'-.',
+	'o' :'---',
+	'p' :'.--.',
+	'q' :'--.-',
+	'r' :'.-.',
+	's' :'...',
+	't' :'-',
+	'u' :'..-',
+	'v' :'...-',
+	'w' :'.--',
+	'x' :'-..-',
+	'y' :'-.--',
+	'z' :'--..',
+	'1' :'.----',
+	'2' :'..---',
+	'3' :'...--',
+	'4' :'....-',
+	'5' :'.....',
+	'6' :'-....',
+	'7' :'--...',
+	'8' :'---..',
+	'9' :'----.',
+	'0' :'-----',
+	' ' :'  '
+}
+
+morseCode1 = {
 	'a' :'•—',
 	'b' :'—•••',
 	'c' :'—•—•',
@@ -86,11 +125,20 @@ text = text.lower()
 
 if '-f' in selectedOptions:
 	if '-t' in selectedOptions:
-		print("'-f' option and '-t' cannot be used at once.")
+		print("'-f' and '-t' options cannot be used at once.")
 		help()
 	elif '-r' in selectedOptions:
 		print(invert(text))
+	elif '-f' in selectedOptions:
+		print(convert(text))
+elif '-t' in selectedOptions:
+	if '-r' in selectedOptions:
+		print("'-t' and '-r' options cannot be used at once.")
+		help()
+	elif '-t' in selectedOptions:
+		print(convert(text))
 
 
-print(transformedText)
-print(output.strip())
+
+# print(transformedText)
+# print(output.strip())
