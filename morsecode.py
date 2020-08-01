@@ -88,7 +88,8 @@ invalidCharacter = "?"
 
 
 def help():
-	pass
+	print("Usage: python morsecode.py [options] [text/file]")
+	print("\n[options]\n    -t -> represents the input given is normal text\n    -r -> represents the input given should be converted to normal text\n    -f -> represents the input given is a file name (on progress)\n ")
 
 def convert(text):
 	transformedText = ""
@@ -123,7 +124,7 @@ def invert(morseText):
 	return output
 
 #Don't change
-options = ['-f', '-t', '-r']
+options = ['-f', '-t', '-r', '-h']
 selectedOptions = []
 textStartIndex = 1
 
@@ -136,7 +137,9 @@ if len(selectedOptions) != 0:
 text = ' '.join(sys.argv[textStartIndex:])
 text = text.lower()
 
-if '-f' in selectedOptions:
+if '-h' in selectedOptions:
+	help()
+elif '-f' in selectedOptions:
 	if '-t' in selectedOptions:
 		print("'-f' and '-t' options cannot be used at once.")
 		help()
